@@ -3,6 +3,9 @@ import { existsSync, readFileSync } from 'fs'
 import { Client } from 'discord.js'
 import { readRecursively } from '../utils'
 import { Command, Config } from '../types'
+import pm2 from 'pm2'
+
+pm2.connect(() => {})
 
 const PATH = path.resolve()
 
