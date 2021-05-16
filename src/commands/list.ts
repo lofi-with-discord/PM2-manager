@@ -10,8 +10,9 @@ export default (client: Client, msg: Message) =>
       ...proc
         ? {
             fields: proc.reduce((prev, curr) => [...prev, ({
-              name: curr.name,
-              value: `pid: \`${curr.pid}\`\ncpu: \`${curr.monit?.cpu}\`\nmem: \`${curr.monit?.memory}\``
+              name: `${curr.pm2_env?.status === 'online' ? '🟢' : '🔴'} ${curr.name}`,
+              value: `status: \`${curr.pm2_env?.status}\`\npid: \`${curr.pid}\`\ncpu: \`${curr.monit?.cpu}\`\nmem: \`${curr.monit?.memory}\``,
+              inline: true
             } as EmbedField)], [] as EmbedField[])
           }
         : {},
